@@ -1,4 +1,4 @@
-﻿name: Update APT Repository
+name: Update APT Repository
 
 on:
   push:
