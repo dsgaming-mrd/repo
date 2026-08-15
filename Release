@@ -6,3 +6,21 @@ Codename: ios
 Architectures: iphoneos-arm iphoneos-arm64
 Components: main
 Description: A permanent, automated archive of iOS tweaks and utilities.
+MD5Sum:
+ 3e5008589bc52067ea8bb42d018ff2ff 13356 Packages
+ 3c905823ba809ced9578ee321ee514a5 4362 Packages.gz
+ a11e78ca3c4f3a72284d4a09ed9afe1f 4426 Packages.bz2
+ 41f0fb8ceb16abebe32887b03d816e0e 4204 Packages.xz
+ 51ba7f55d9dce2be703bef95b3774c51 4235 Packages.zst
+SHA1:
+ a89f72911b6249cf4e32c8e50e8eafec36e82b80 13356 Packages
+ 6098de2f7f45e3328873da15a8473e86f8eaf4a5 4362 Packages.gz
+ 10999908cf1b78dced39689b9c06de63119cdd34 4426 Packages.bz2
+ 031c4c090bbff6d278bef14a07e6e56b994601f7 4204 Packages.xz
+ 2e2ea98a0af6d083211fdc64ba1d4112b417008c 4235 Packages.zst
+SHA256:
+ 5e53e9e138f98dfe9a49143b6a761eaf6ad40f06bd80eccebb29ccf95a4d1230 13356 Packages
+ 7d9fa4679618b9e6cdea9b243078efe8f124c4b5c623f385cc0b99715b92b81d 4362 Packages.gz
+ 864522c356ecf7c98c69746c07418d42422d3037ceb2888f2a65667cf13e75a4 4426 Packages.bz2
+ 439c093f9c0cd165cb1f6ac1df3358a76b7ce12c4f97116e4f31b00f3b0afa44 4204 Packages.xz
+ 89f4b8acb19900f1642cd1fb47f7d817b1673eaf1087c05f218fd972a96967f5 4235 Packages.zst

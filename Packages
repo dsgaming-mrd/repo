@@ -4,7 +4,7 @@ Architecture: iphoneos-arm
 Maintainer: BigBoss <bigboss@thebigboss.org>
 Installed-Size: 1514
 Depends: mobilesubstrate (>= 0.9.5000), firmware (>= 10.0), com.rpetrich.rocketbootstrap (>= 1.0.3), applist, preferenceloader
-Filename: ./Rootful (arm)/appfirewall_1.3e.deb
+Filename: Rootful (arm)/appfirewall_1.3e.deb
 Size: 228038
 MD5sum: 35e87ebc58ff4689999805cb2f587b21
 SHA1: 929d669342023cf909b276b7941cb481740f5b53
@@ -25,7 +25,7 @@ Architecture: iphoneos-arm
 Maintainer: Brend0n <brendonjkding@126.com>
 Installed-Size: 136
 Depends: mobilesubstrate
-Filename: ./Rootful (arm)/MilkyWay2/milkyway2ios14fix.deb
+Filename: Rootful (arm)/MilkyWay2/milkyway2ios14fix.deb
 Size: 10150
 MD5sum: 97fa560c870e9fbcc75e366e0cebe335
 SHA1: ec1eb31c1a50520e34d9a9114fe516eb500b5400
@@ -43,7 +43,7 @@ Architecture: iphoneos-arm
 Maintainer: HackYouriPhone <repo@hackyouriphone.org>
 Depends: firmware (>= 11.0), mobilesubstrate, com.rpetrich.rocketbootstrap | com.hackyouriphone.rocketbootstrap
 Conflicts: com.unlimapps.uaupdatetools
-Filename: ./Rootful (arm)/com.hackyouriphone.appstoreplusplus_0.9.14-2_iphoneos-arm.deb
+Filename: Rootful (arm)/com.hackyouriphone.appstoreplusplus_0.9.14-2_iphoneos-arm.deb
 Size: 561216
 MD5sum: d352fa38ec84bf9661e00eb946a1069f
 SHA1: 16e7ff352a1225c4a1ba654644632dc4d6437c8b
@@ -62,7 +62,7 @@ Architecture: iphoneos-arm
 Maintainer: BigBoss <bigboss@thebigboss.org>
 Installed-Size: 305
 Depends: firmware (>= 7.0)
-Filename: ./Rootful (arm)/Choicy/com.opa334.altlist_1.0.11_iphoneos-arm.deb
+Filename: Rootful (arm)/Choicy/com.opa334.altlist_1.0.11_iphoneos-arm.deb
 Size: 47212
 MD5sum: b2dc2a7d981c7e82d724b4b4649e9850
 SHA1: 678f956bc11bd47067a25e46c0ef9481f18052e1
@@ -83,7 +83,7 @@ Architecture: iphoneos-arm
 Maintainer: BigBoss <bigboss@thebigboss.org>
 Installed-Size: 1343
 Depends: firmware (>= 10.0), mobilesubstrate (>= 0.9.5000), preferenceloader, com.opa334.altlist (>= 1.0.4)
-Filename: ./Rootful (arm)/Choicy/com.opa334.choicy_1.5.4-2_iphoneos-arm.deb
+Filename: Rootful (arm)/Choicy/com.opa334.choicy_1.5.4-2_iphoneos-arm.deb
 Size: 261546
 MD5sum: 07aff47e221f5458b12b3a8dc99ab079
 SHA1: eafea801025f5b2ef70254c3e18c4f2c34b7833c
@@ -106,7 +106,7 @@ Maintainer: BigBoss <bigboss@thebigboss.org>
 Installed-Size: 475
 Depends: clang-10, clang, curl, git, coreutils, unzip, coreutils-bin, grep, ldid, rsync, xz, dpkg, lz4, make, perl, odcctools, darwintools, llvm, llvm-10, libllvm10, com.bingner.plutil, com.randy420.tools (>= 2.1), mterminal, com.kabiroberai.swift-toolchain, openssl, com.opa334.ccsupport
 Conflicts: net.howett.theos, com.randy420.encrypt
-Filename: ./Rootful (arm)/TheosAutoInstaller.deb
+Filename: Rootful (arm)/TheosAutoInstaller.deb
 Size: 39142
 MD5sum: 40c1ecd28c22c1f6ffebfb3a9f0438cd
 SHA1: 4192fc46278895d15c827d5eceb4c1272523e630
@@ -127,7 +127,7 @@ Architecture: iphoneos-arm
 Maintainer: BigBoss <bigboss@thebigboss.org>
 Installed-Size: 1929
 Depends: mobilesubstrate(>= 0.9.5015), firmware (>= 7.0), ws.hbang.common (>= 1.13.1), applist, preferenceloader
-Filename: ./Rootful (arm)/com.thuthuatjb.hidejb_2.1.1_iphoneos-arm.deb
+Filename: Rootful (arm)/com.thuthuatjb.hidejb_2.1.1_iphoneos-arm.deb
 Size: 179376
 MD5sum: 519e773c3bbfa2af8625c45aba01c552
 SHA1: a199f6eb6ca8529a506047830d1943517742ad3d
@@ -148,7 +148,7 @@ Architecture: iphoneos-arm
 Maintainer: BigBoss <bigboss@thebigboss.org>
 Installed-Size: 9121
 Depends: firmware (>= 7.0)
-Filename: ./Rootful (arm)/com.tigisoftware.appdatamanager_1.8.2-5_iphoneos-arm.deb
+Filename: Rootful (arm)/com.tigisoftware.appdatamanager_1.8.2-5_iphoneos-arm.deb
 Size: 2518478
 MD5sum: eb6c5095ab86800f5e49b8df091f07a2
 SHA1: 95d425e279d92a12dbb6ffe4eb6b48523e7ae928
@@ -172,7 +172,7 @@ Maintainer: BigBoss <bigboss@thebigboss.org>
 Installed-Size: 31815
 Depends: firmware (>= 7.0), zip, unzip, gzip, unrar, p7zip
 Conflicts: com.tigisoftware.filza64bit, com.tigisoftware.filza39
-Filename: ./Rootful (arm)/com.tigisoftware.filza_4.0.1-3_iphoneos-arm.deb
+Filename: Rootful (arm)/com.tigisoftware.filza_4.0.1-3_iphoneos-arm.deb
 Size: 10215790
 MD5sum: 60322f74b0e669a35c04e3d864241e1e
 SHA1: 5f55e3c714ee9e81bad34bebb279201490014bd6
@@ -194,7 +194,7 @@ Version: 4.0~beta10b
 Architecture: iphoneos-arm
 Maintainer: Julio
 Depends: sed, shell-cmds, system-cmds, uikittools (>= 1.1.4), coreutils-bin, coreutils
-Filename: ./Rootful (arm)/cracktool4.deb
+Filename: Rootful (arm)/cracktool4.deb
 Size: 2957368
 MD5sum: 1e970481fb7f3bd822139ec67b48ef71
 SHA1: 60bc8c193c60b8e7db4c3ff5192d37adfcdb0b97
@@ -213,7 +213,7 @@ Architecture: iphoneos-arm
 Maintainer: akusio <akusio-report@neko2.net>
 Installed-Size: 244
 Depends: mobilesubstrate, com.opa334.ccsupport
-Filename: ./Rootful (arm)/MilkyWay2/backgrounderAction2.deb
+Filename: Rootful (arm)/MilkyWay2/backgrounderAction2.deb
 Size: 16182
 MD5sum: bd500eeca954c50a6fe4aa9cc769a7ce
 SHA1: 260d8a75c36a7c1a680e668635b1eb19e8289793
@@ -231,7 +231,7 @@ Architecture: iphoneos-arm
 Maintainer: akusio <akusio-report@neko2.net>
 Installed-Size: 376
 Depends: mobilesubstrate, jp.akusio.backgrounderaction13, applist, preferenceloader
-Filename: ./Rootful (arm)/MilkyWay2/milkyway2.deb
+Filename: Rootful (arm)/MilkyWay2/milkyway2.deb
 Size: 44822
 MD5sum: 45aff19ea7b0327a72e50c4a87d68cd8
 SHA1: a779498db20097cef4783e6d817796d640bd6372
@@ -249,7 +249,7 @@ Maintainer: @akusio_RR
 Installed-Size: 3464
 Pre-Depends: rootless-compat(>= 0.9)
 Depends: mobilesubstrate, com.opa334.altlist, preferenceloader
-Filename: ./Roothide (arm64e)/jp.akusio.milkyway4_0.1.1_iphoneos-arm64e.deb
+Filename: Roothide (arm64e)/jp.akusio.milkyway4_0.1.1_iphoneos-arm64e.deb
 Size: 3402450
 MD5sum: 84c01d3e36f676c5c34e15669e42c003
 SHA1: 5a12ed4993144363c623ce9a948738c707a6b9d6
@@ -266,7 +266,7 @@ Architecture: iphoneos-arm64
 Maintainer: @akusio_RR
 Installed-Size: 3464
 Depends: mobilesubstrate, com.opa334.altlist, preferenceloader
-Filename: ./Rootless (arm64)/jp.akusio.milkyway4_0.1.1_iphoneos-arm64.deb
+Filename: Rootless (arm64)/jp.akusio.milkyway4_0.1.1_iphoneos-arm64.deb
 Size: 1313898
 MD5sum: 4a30fc9b4d66260be1fc532d40066a0b
 SHA1: 9ce6a80d1bbb87ffb13c1cc56bbc7a80c795e615
@@ -283,7 +283,7 @@ Architecture: iphoneos-arm
 Maintainer: BigBoss <bigboss@thebigboss.org>
 Installed-Size: 3823
 Depends: firmware (>= 13.0), mobilesubstrate, preferenceloader
-Filename: ./Rootful (arm)/netskao.flexlist_1.3-8_iphoneos-arm.deb
+Filename: Rootful (arm)/netskao.flexlist_1.3-8_iphoneos-arm.deb
 Size: 834896
 MD5sum: 710fd68d32a0f086cff5adabc79bf095
 SHA1: 025162fa3fad511f4f6a9d07e2c53757ac9e6c51
@@ -305,7 +305,7 @@ Architecture: iphoneos-arm
 Maintainer: CyPwn
 Depends: coreutils-bin, coreutils, mobilesubstrate, preferenceloader
 Conflicts: com.julioverne.cydown
-Filename: ./Rootful (arm)/xyz.cypwn.cydown_7.1.6_iphoneos-arm.deb
+Filename: Rootful (arm)/xyz.cypwn.cydown_7.1.6_iphoneos-arm.deb
 Size: 4463408
 MD5sum: 2b05e81b0cf3c65181971ca28ba92872
 SHA1: 72f7ad59f6dd88f43804bccf3f6c2a991be074a1
