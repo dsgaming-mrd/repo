@@ -7,12 +7,12 @@
     <link rel="icon" type="image/png" href="CydiaIcon.png">
     <style>
         :root {
-            --bg-color: #0b0f19;
-            --card-bg: #161f30;
+            --bg-gradient: radial-gradient(circle at 50% 0%, #172554 0%, #0b0f19 75%);
+            --card-bg: rgba(22, 31, 48, 0.75);
+            --card-border: rgba(255, 255, 255, 0.08);
             --accent-blue: #0088ff;
-            --text-main: #f8fafc;
-            --text-sub: #94a3b8;
-            --border-color: #243048;
+            --text-primary: #f8fafc;
+            --text-muted: #94a3b8;
         }
 
         * {
@@ -24,75 +24,85 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
+            background: var(--bg-gradient);
+            background-color: #0b0f19;
+            color: var(--text-primary);
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
             padding: 24px 16px;
         }
 
         .container {
             width: 100%;
-            max-width: 440px;
-            background-color: var(--card-bg);
-            border-radius: 20px;
-            padding: 28px 20px;
-            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
-            border: 1px solid var(--border-color);
+            max-width: 420px;
+            background: var(--card-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--card-border);
+            border-radius: 24px;
+            padding: 32px 24px;
             text-align: center;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
         }
 
-        .avatar {
-            width: 72px;
-            height: 72px;
-            border-radius: 18px;
+        .logo-wrap {
+            width: 80px;
+            height: 80px;
             margin: 0 auto 16px;
-            background: linear-gradient(135deg, #0088ff, #0055aa);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 32px;
-            box-shadow: 0 8px 16px rgba(0, 136, 255, 0.25);
+            border-radius: 20px;
+            padding: 3px;
+            background: linear-gradient(135deg, #0088ff, #00d2ff);
+            box-shadow: 0 8px 24px rgba(0, 136, 255, 0.35);
+        }
+
+        .logo-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 17px;
+            object-fit: cover;
+            background: #111827;
+            display: block;
         }
 
         h1 {
-            font-size: 22px;
+            font-size: 23px;
             font-weight: 700;
+            letter-spacing: -0.4px;
             margin-bottom: 6px;
-            letter-spacing: -0.3px;
         }
 
         .desc {
-            color: var(--text-sub);
             font-size: 13.5px;
-            line-height: 1.4;
+            color: var(--text-muted);
+            line-height: 1.5;
             margin-bottom: 20px;
         }
 
-        .badges {
+        .tag-group {
             display: flex;
             justify-content: center;
             gap: 8px;
-            margin-bottom: 24px;
+            margin-bottom: 28px;
         }
 
-        .badge {
+        .tag {
             font-size: 11px;
             font-weight: 600;
-            padding: 4px 10px;
-            border-radius: 20px;
-            background: #1e293b;
-            color: var(--accent-blue);
-            border: 1px solid var(--border-color);
+            padding: 5px 12px;
+            border-radius: 999px;
+            background: rgba(0, 136, 255, 0.12);
+            color: #38bdf8;
+            border: 1px solid rgba(56, 189, 248, 0.25);
             text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
-        .btn-group {
+        .btn-list {
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 12px;
         }
 
         .btn {
@@ -101,88 +111,125 @@
             justify-content: center;
             gap: 10px;
             width: 100%;
-            padding: 13px;
-            border-radius: 12px;
+            padding: 13px 16px;
+            border-radius: 14px;
             text-decoration: none;
             font-weight: 600;
             font-size: 14.5px;
             color: #ffffff;
-            transition: transform 0.15s ease, opacity 0.15s ease;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            filter: brightness(1.08);
         }
 
         .btn:active {
             transform: scale(0.98);
-            opacity: 0.85;
         }
 
-        /* Package Manager Colors */
-        .btn-sileo     { background: linear-gradient(135deg, #2f80ed, #0056b3); }
-        .btn-zebra     { background: linear-gradient(135deg, #f2994a, #d35400); }
-        .btn-cydia     { background: linear-gradient(135deg, #9b51e0, #6c2bb5); }
-        .btn-installer { background: linear-gradient(135deg, #eb5757, #c0392b); }
-        .btn-saily     { background: linear-gradient(135deg, #27ae60, #1e8449); }
+        /* Gradient màu thương hiệu cho từng App */
+        .btn-sileo { background: linear-gradient(135deg, #2f80ed, #1c58a6); box-shadow: 0 6px 18px rgba(47, 128, 237, 0.3); }
+        .btn-zebra { background: linear-gradient(135deg, #f2994a, #c05c08); box-shadow: 0 6px 18px rgba(242, 153, 74, 0.3); }
+        .btn-cydia { background: linear-gradient(135deg, #a855f7, #6b21a8); box-shadow: 0 6px 18px rgba(168, 85, 247, 0.3); }
+        .btn-installer { background: linear-gradient(135deg, #ef4444, #991b1b); box-shadow: 0 6px 18px rgba(239, 68, 68, 0.3); }
+        .btn-saily { background: linear-gradient(135deg, #10b981, #065f46); box-shadow: 0 6px 18px rgba(16, 185, 129, 0.3); }
 
-        .url-box {
-            margin-top: 22px;
-            padding: 12px;
-            background: #0f172a;
-            border-radius: 10px;
-            border: 1px dashed var(--border-color);
-            font-size: 12px;
-            color: var(--text-sub);
-            word-break: break-all;
+        .btn svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+        }
+
+        .url-card {
+            margin-top: 24px;
+            padding: 14px;
+            background: rgba(15, 23, 42, 0.6);
+            border-radius: 12px;
+            border: 1px dashed rgba(255, 255, 255, 0.15);
+            font-size: 12.5px;
+            color: var(--text-muted);
             cursor: pointer;
-            user-select: all;
+            word-break: break-all;
+            transition: border-color 0.2s ease;
+        }
+
+        .url-card:hover {
+            border-color: var(--accent-blue);
+            color: #e2e8f0;
+        }
+
+        .url-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+            color: #64748b;
+        }
+
+        .url-text {
+            color: #38bdf8;
+            font-weight: 500;
         }
 
         .footer {
-            margin-top: 18px;
-            font-size: 11.5px;
+            margin-top: 22px;
+            font-size: 12px;
             color: #64748b;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="avatar">📦</div>
-        <h1>DS Gaming Repo</h1>
-        <p class="desc">Kho lưu trữ Tweak & Công cụ can thiệp iOS Jailbreak hỗ trợ Rootful, Rootless và Roothide.</p>
-
-        <div class="badges">
-            <span class="badge">Rootful</span>
-            <span class="badge">Rootless</span>
-            <span class="badge">Roothide</span>
+        <!-- Logo Web (Tự load CydiaIcon.png hoặc ảnh fallback) -->
+        <div class="logo-wrap">
+            <img class="logo-img" src="CydiaIcon.png" onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/dsgaming-mrd/repo/main/CydiaIcon.png';" alt="DS Gaming">
         </div>
 
-        <div class="btn-group">
-            <!-- Sileo / Bootstrap -->
+        <h1>DS Gaming APT Repo</h1>
+        <p class="desc">Kho lưu trữ Tweak & Công cụ iOS Jailbreak tự động hóa.</p>
+
+        <!-- Kiến trúc hỗ trợ -->
+        <div class="tag-group">
+            <span class="tag">Rootful</span>
+            <span class="tag">Rootless</span>
+            <span class="tag">Roothide</span>
+        </div>
+
+        <!-- Danh sách nút cài nguồn với margin/padding chuẩn -->
+        <div class="btn-list">
             <a class="btn btn-sileo" href="sileo://source/https://dsgaming-mrd.github.io/repo/">
+                <svg viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 3.5c.62-.75 1.04-1.8 0.92-2.85-.9.04-1.99.6-2.63 1.35-.57.65-1.06 1.72-.93 2.75 1 .08 2.02-.5 2.64-1.25z"/></svg>
                 <span>Thêm vào Sileo / Bootstrap</span>
             </a>
 
-            <!-- Zebra -->
             <a class="btn btn-zebra" href="zbra://sources/add/https://dsgaming-mrd.github.io/repo/">
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
                 <span>Thêm vào Zebra</span>
             </a>
 
-            <!-- Cydia -->
             <a class="btn btn-cydia" href="cydia://url/https://cydia.saurik.com/api/share#?source=https://dsgaming-mrd.github.io/repo/">
+                <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
                 <span>Thêm vào Cydia</span>
             </a>
 
-            <!-- Installer 5 -->
             <a class="btn btn-installer" href="installer://source/https://dsgaming-mrd.github.io/repo/">
+                <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
                 <span>Thêm vào Installer 5</span>
             </a>
 
-            <!-- Saily -->
             <a class="btn btn-saily" href="saily://add-source?url=https://dsgaming-mrd.github.io/repo/">
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
                 <span>Thêm vào Saily</span>
             </a>
         </div>
 
-        <div class="url-box" onclick="navigator.clipboard.writeText('https://dsgaming-mrd.github.io/repo/'); alert('Đã sao chép link nguồn!');">
-            URL: <strong>https://dsgaming-mrd.github.io/repo/</strong>
+        <!-- Khung URL bấm để copy -->
+        <div class="url-card" onclick="navigator.clipboard.writeText('https://dsgaming-mrd.github.io/repo/'); alert('Đã sao chép link nguồn!');">
+            <div class="url-label">Bấm để sao chép URL nguồn</div>
+            <div class="url-text">https://dsgaming-mrd.github.io/repo/</div>
         </div>
 
         <div class="footer">
