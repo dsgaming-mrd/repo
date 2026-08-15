@@ -17,34 +17,40 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Install build tools
+      - name: Install APT build tools
         run: |
-          sudo apt update
-          sudo apt install -y dpkg-dev bzip2 gzip xz-utils sed
+          sudo apt-get update
+          sudo apt-get install -y dpkg-dev bzip2 gzip xz-utils sed
 
-      - name: Generate Flat APT Repository
+      - name: Generate APT Indexes
         run: |
           touch .nojekyll
           rm -f Packages Packages.gz Packages.bz2 Packages.xz Release Release.gpg InRelease
+          
+          # Quét tất cả file .deb trong các thư mục con
           dpkg-scanpackages -m . /dev/null > Packages
           sed -i 's|Filename: \./|Filename: |g' Packages
+          
+          # Nén các định dạng chuẩn cho Cydia / Sileo / Zebra
           bzip2 -c9 Packages > Packages.bz2
           xz -c9 Packages > Packages.xz
-          cat << 'EOF' > Release
-Origin: DS Gaming APT Repository
-Label: DS Gaming
-Suite: stable
-Version: 1.0
-Codename: ios
-Architectures: iphoneos-arm iphoneos-arm64
-Components: main
-Description: A permanent archive of iOS tweaks and utilities.
-EOF
+          gzip -c9 Packages > Packages.gz
 
-      - name: Push index updates
+          # Tạo file Release bằng printf chuẩn xác 100% không vỡ cấu trúc YAML
+          printf "Origin: DS Gaming APT Repository\n" > Release
+          printf "Label: DS Gaming\n" >> Release
+          printf "Suite: stable\n" >> Release
+          printf "Version: 1.0\n" >> Release
+          printf "Codename: ios\n" >> Release
+          printf "Architectures: iphoneos-arm iphoneos-arm64\n" >> Release
+          printf "Components: main\n" >> Release
+          printf "Description: A permanent archive of iOS tweaks and utilities.\n" >> Release
+
+      - name: Commit and Push valid indexes
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add -A
-          git diff --quiet && git diff --staged --quiet || (git commit -m "fix: automatic APT indexing [skip ci]" && git push origin main)
+          git diff --quiet && git diff --staged --quiet || (git commit -m "fix: auto generate APT indexes [skip ci]" && git push origin main)
