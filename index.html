@@ -1,0 +1,193 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>DS Gaming APT Repository</title>
+    <link rel="icon" type="image/png" href="CydiaIcon.png">
+    <style>
+        :root {
+            --bg-color: #0b0f19;
+            --card-bg: #161f30;
+            --accent-blue: #0088ff;
+            --text-main: #f8fafc;
+            --text-sub: #94a3b8;
+            --border-color: #243048;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 24px 16px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 440px;
+            background-color: var(--card-bg);
+            border-radius: 20px;
+            padding: 28px 20px;
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+            border: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .avatar {
+            width: 72px;
+            height: 72px;
+            border-radius: 18px;
+            margin: 0 auto 16px;
+            background: linear-gradient(135deg, #0088ff, #0055aa);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            box-shadow: 0 8px 16px rgba(0, 136, 255, 0.25);
+        }
+
+        h1 {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 6px;
+            letter-spacing: -0.3px;
+        }
+
+        .desc {
+            color: var(--text-sub);
+            font-size: 13.5px;
+            line-height: 1.4;
+            margin-bottom: 20px;
+        }
+
+        .badges {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 24px;
+        }
+
+        .badge {
+            font-size: 11px;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 20px;
+            background: #1e293b;
+            color: var(--accent-blue);
+            border: 1px solid var(--border-color);
+            text-transform: uppercase;
+        }
+
+        .btn-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            padding: 13px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14.5px;
+            color: #ffffff;
+            transition: transform 0.15s ease, opacity 0.15s ease;
+        }
+
+        .btn:active {
+            transform: scale(0.98);
+            opacity: 0.85;
+        }
+
+        /* Package Manager Colors */
+        .btn-sileo     { background: linear-gradient(135deg, #2f80ed, #0056b3); }
+        .btn-zebra     { background: linear-gradient(135deg, #f2994a, #d35400); }
+        .btn-cydia     { background: linear-gradient(135deg, #9b51e0, #6c2bb5); }
+        .btn-installer { background: linear-gradient(135deg, #eb5757, #c0392b); }
+        .btn-saily     { background: linear-gradient(135deg, #27ae60, #1e8449); }
+
+        .url-box {
+            margin-top: 22px;
+            padding: 12px;
+            background: #0f172a;
+            border-radius: 10px;
+            border: 1px dashed var(--border-color);
+            font-size: 12px;
+            color: var(--text-sub);
+            word-break: break-all;
+            cursor: pointer;
+            user-select: all;
+        }
+
+        .footer {
+            margin-top: 18px;
+            font-size: 11.5px;
+            color: #64748b;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="avatar">📦</div>
+        <h1>DS Gaming Repo</h1>
+        <p class="desc">Kho lưu trữ Tweak & Công cụ can thiệp iOS Jailbreak hỗ trợ Rootful, Rootless và Roothide.</p>
+
+        <div class="badges">
+            <span class="badge">Rootful</span>
+            <span class="badge">Rootless</span>
+            <span class="badge">Roothide</span>
+        </div>
+
+        <div class="btn-group">
+            <!-- Sileo / Bootstrap -->
+            <a class="btn btn-sileo" href="sileo://source/https://dsgaming-mrd.github.io/repo/">
+                <span>Thêm vào Sileo / Bootstrap</span>
+            </a>
+
+            <!-- Zebra -->
+            <a class="btn btn-zebra" href="zbra://sources/add/https://dsgaming-mrd.github.io/repo/">
+                <span>Thêm vào Zebra</span>
+            </a>
+
+            <!-- Cydia -->
+            <a class="btn btn-cydia" href="cydia://url/https://cydia.saurik.com/api/share#?source=https://dsgaming-mrd.github.io/repo/">
+                <span>Thêm vào Cydia</span>
+            </a>
+
+            <!-- Installer 5 -->
+            <a class="btn btn-installer" href="installer://source/https://dsgaming-mrd.github.io/repo/">
+                <span>Thêm vào Installer 5</span>
+            </a>
+
+            <!-- Saily -->
+            <a class="btn btn-saily" href="saily://add-source?url=https://dsgaming-mrd.github.io/repo/">
+                <span>Thêm vào Saily</span>
+            </a>
+        </div>
+
+        <div class="url-box" onclick="navigator.clipboard.writeText('https://dsgaming-mrd.github.io/repo/'); alert('Đã sao chép link nguồn!');">
+            URL: <strong>https://dsgaming-mrd.github.io/repo/</strong>
+        </div>
+
+        <div class="footer">
+            © 2026 DS Gaming. All rights reserved.
+        </div>
+    </div>
+</body>
+</html>
