@@ -30,4 +30,4 @@
 To add this repository manually to your package manager, copy and paste the following URL:
 
 ```text
-[https://dsgaming-mrd.github.io/repo/](https://dsgaming-mrd.github.io/repo/)
+https://dsgaming-mrd.github.io/repo/
