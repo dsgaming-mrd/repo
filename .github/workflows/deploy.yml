@@ -1,0 +1,51 @@
+﻿name: Update APT Repository
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install APT build tools
+        run: |
+          sudo apt update
+          sudo apt install -y dpkg-dev bzip2 xz-utils zstd
+
+      - name: Scan packages and generate index
+        run: |
+          dpkg-scanpackages -m . /dev/null > Packages
+          bzip2 -c9 Packages > Packages.bz2
+          xz -c9 Packages > Packages.xz
+          zstd -c19 Packages > Packages.zst
+
+          cat << 'REL' > Release
+          Origin: DS Gaming APT Repository
+          Label: DS Gaming
+          Suite: stable
+          Version: 1.0
+          Codename: ios
+          Architectures: iphoneos-arm iphoneos-arm64
+          Components: main
+          Description: A permanent, automated archive of iOS tweaks, system modifications, and utilities.
+          REL
+
+      - name: Commit and Push generated indexes back to main
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add Packages Packages.bz2 Packages.xz Packages.zst Release
+          git diff --quiet && git diff --staged --quiet || (git commit -m "auto: update repository indexes [skip ci]" && git push origin main)
