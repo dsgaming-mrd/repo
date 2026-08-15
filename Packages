@@ -247,18 +247,17 @@ Version: 0.1.1
 Architecture: iphoneos-arm64e
 Maintainer: @akusio_RR
 Installed-Size: 3464
-Pre-Depends: rootless-compat(>= 0.9)
 Depends: mobilesubstrate, com.opa334.altlist, preferenceloader
 Filename: Roothide (arm64e)/jp.akusio.milkyway4_0.1.1_iphoneos-arm64e.deb
-Size: 3402450
-MD5sum: 84c01d3e36f676c5c34e15669e42c003
-SHA1: 5a12ed4993144363c623ce9a948738c707a6b9d6
-SHA256: a569a184f37557c83057ac2dd20db241f7a9b2571e5cf2476a3f2dfcc5a8ae1c
+Size: 1371340
+MD5sum: 1ee0414ef2deac79156d0e6178e80484
+SHA1: d74043da9fdbb07575b534d5ff99535f3748d7a2
+SHA256: e82912b8ab84d6f808d8796e137a2b0b9452c17bc4fc8c32c95810f8f999e12c
 Section: Tweaks
-Description: multitasking for iOS15 rootless.
+Description: multitasking for iOS15 roothide.
 Author: @akusio_RR
 Depiction: https://akusio.github.io/descriptions/milkyway4/index.html
-Name: MilkyWay4-rootless
+Name: MilkyWay4-roothide
 
 Package: jp.akusio.milkyway4
 Version: 0.1.1
