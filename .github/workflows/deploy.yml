@@ -23,15 +23,20 @@ jobs:
       - name: Install APT build tools
         run: |
           sudo apt update
-          sudo apt install -y dpkg-dev bzip2 xz-utils zstd
+          sudo apt install -y dpkg-dev bzip2 gzip xz-utils zstd
 
-      - name: Scan packages and generate index
+      - name: Scan packages and generate valid Release with SHA256
         run: |
+          # 1. Quét tất cả file .deb
           dpkg-scanpackages -m . /dev/null > Packages
+          
+          # 2. Nén các định dạng mà Cydia / Sileo / Zebra cần
+          gzip -c9 Packages > Packages.gz
           bzip2 -c9 Packages > Packages.bz2
           xz -c9 Packages > Packages.xz
           zstd -c19 Packages > Packages.zst
 
+          # 3. Tạo file Release có đầy đủ mã băm SHA256 và MD5 (Fix lỗi hash/signature trên Cydia)
           cat << 'REL' > Release
           Origin: DS Gaming APT Repository
           Label: DS Gaming
@@ -40,12 +45,30 @@ jobs:
           Codename: ios
           Architectures: iphoneos-arm iphoneos-arm64
           Components: main
-          Description: A permanent, automated archive of iOS tweaks, system modifications, and utilities.
+          Description: A permanent, automated archive of iOS tweaks and utilities.
+          MD5Sum:
           REL
 
-      - name: Commit and Push generated indexes back to main
+          for file in Packages Packages.gz Packages.bz2 Packages.xz Packages.zst; do
+            if [ -f "$file" ]; then
+              size=$(wc -c < "$file")
+              md5=$(md5sum "$file" | cut -d ' ' -f 1)
+              echo " $md5 $size $file" >> Release
+            fi
+          done
+
+          echo "SHA256:" >> Release
+          for file in Packages Packages.gz Packages.bz2 Packages.xz Packages.zst; do
+            if [ -f "$file" ]; then
+              size=$(wc -c < "$file")
+              sha256=$(sha256sum "$file" | cut -d ' ' -f 1)
+              echo " $sha256 $size $file" >> Release
+            fi
+          done
+
+      - name: Commit and Push valid indexes
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add Packages Packages.bz2 Packages.xz Packages.zst Release
-          git diff --quiet && git diff --staged --quiet || (git commit -m "auto: update repository indexes [skip ci]" && git push origin main)
+          git add Packages Packages.gz Packages.bz2 Packages.xz Packages.zst Release
+          git diff --quiet && git diff --staged --quiet || (git commit -m "fix: generate valid Release with SHA256 checksums [skip ci]" && git push origin main)
