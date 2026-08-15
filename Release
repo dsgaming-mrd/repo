@@ -6,15 +6,3 @@ Codename: ios
 Architectures: iphoneos-arm iphoneos-arm64
 Components: main
 Description: A permanent, automated archive of iOS tweaks and utilities.
-MD5Sum:
- aa5fc7d6f07cb30366d43316ffaa887c 13388 Packages
- 7d18db6153b088006354b89e02547c10 4364 Packages.gz
- 1895b7b8270c1289e451e3377157581f 4430 Packages.bz2
- c8369d7fb5ff9ceee386d726b9a9c4dd 4208 Packages.xz
- 97e4b5d6d82ded3d76c17b1bf92b4ba5 4243 Packages.zst
-SHA256:
- f0a6ce905df6e7b7107cdc19c4e8baf4195b5015b0df390e45dec9dcf19b68fc 13388 Packages
- 3cd251bfce9a49fed179063e8488faeaabe43e4462c0da0f6dc9cd6a4adbb191 4364 Packages.gz
- ca2badec86e799fc566cf2ad4a0e05bdc068d0f2d95410c09a80cfa7b30faf65 4430 Packages.bz2
- c381e92050e39c4357f9618dbbb39c328a07b94ac43ff4ececa8d060aa73fe28 4208 Packages.xz
- 407073a8dd148aac228e5bfcd56eff7f659d041bbe9d356f4d9cb9e37ca28837 4243 Packages.zst
