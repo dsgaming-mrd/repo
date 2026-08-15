@@ -21,70 +21,39 @@ jobs:
       - name: Install APT build tools
         run: |
           sudo apt update
-          sudo apt install -y dpkg-dev bzip2 gzip xz-utils zstd sed
+          sudo apt install -y dpkg-dev bzip2 gzip xz-utils sed
 
-      - name: Generate APT Indexes and Clean Hashes
+      - name: Generate Clean Flat Repository
         run: |
+          # 1. Tao file .nojekyll de bo qua Jekyll parser
           touch .nojekyll
 
-          # 1. Quét toàn bộ deb và xóa bỏ prefix "./" gây lỗi 308/404 trên Cydia
+          # 2. Xoa sach cac index cu de tranh lech hash
+          rm -f Packages Packages.gz Packages.bz2 Packages.xz Release Release.gpg InRelease
+
+          # 3. Quet package va loai bo dau ./
           dpkg-scanpackages -m . /dev/null > Packages
           sed -i 's|Filename: \./|Filename: |g' Packages
 
-          # 2. Xóa các file nén cũ trước khi nén mới để tránh lệch hash
-          rm -f Packages.gz Packages.bz2 Packages.xz Packages.zst Release
-
-          # 3. Tạo các bản nén đồng bộ
-          gzip -c9 Packages > Packages.gz
+          # 4. Nen Packages thanh bz2 va xz (Cydia uu tien Packages.bz2)
           bzip2 -c9 Packages > Packages.bz2
           xz -c9 Packages > Packages.xz
-          zstd -c19 Packages > Packages.zst
 
-          # 4. Tạo Header cho Release
-          cat << 'REL' > Release
-          Origin: DS Gaming APT Repository
-          Label: DS Gaming
-          Suite: stable
-          Version: 1.0
-          Codename: ios
-          Architectures: iphoneos-arm iphoneos-arm64
-          Components: main
-          Description: A permanent, automated archive of iOS tweaks and utilities.
-          REL
+          # 5. Tao file Release chuan thong tin (KHONG ghi hash de tranh lech hash CDN tren Cydia)
+          cat << 'EOF' > Release
+Origin: DS Gaming APT Repository
+Label: DS Gaming
+Suite: stable
+Version: 1.0
+Codename: ios
+Architectures: iphoneos-arm iphoneos-arm64
+Components: main
+Description: A permanent archive of iOS tweaks and utilities.
+EOF
 
-          # 5. Sinh chuẩn MD5Sum
-          echo "MD5Sum:" >> Release
-          for f in Packages Packages.gz Packages.bz2 Packages.xz Packages.zst; do
-            if [ -f "$f" ]; then
-              size=$(wc -c < "$f")
-              hash=$(md5sum "$f" | cut -d ' ' -f 1)
-              echo " $hash $size $f" >> Release
-            fi
-          done
-
-          # 6. Sinh chuẩn SHA1 (Cydia yêu cầu bắt buộc)
-          echo "SHA1:" >> Release
-          for f in Packages Packages.gz Packages.bz2 Packages.xz Packages.zst; do
-            if [ -f "$f" ]; then
-              size=$(wc -c < "$f")
-              hash=$(sha1sum "$f" | cut -d ' ' -f 1)
-              echo " $hash $size $f" >> Release
-            fi
-          done
-
-          # 7. Sinh chuẩn SHA256 (Sileo/Zebra yêu cầu)
-          echo "SHA256:" >> Release
-          for f in Packages Packages.gz Packages.bz2 Packages.xz Packages.zst; do
-            if [ -f "$f" ]; then
-              size=$(wc -c < "$f")
-              hash=$(sha256sum "$f" | cut -d ' ' -f 1)
-              echo " $hash $size $f" >> Release
-            fi
-          done
-
-      - name: Commit and Push valid indexes
+      - name: Commit and Push clean indexes
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add -A
-          git diff --quiet && git diff --staged --quiet || (git commit -m "fix: re-generate compliant APT indexes and hashes [skip ci]" && git push origin main)
+          git diff --quiet && git diff --staged --quiet || (git commit -m "fix: pure flat repo without broken hash checksums [skip ci]" && git push origin main)
