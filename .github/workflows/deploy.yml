@@ -18,28 +18,19 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Install APT build tools
+      - name: Install build tools
         run: |
           sudo apt update
           sudo apt install -y dpkg-dev bzip2 gzip xz-utils sed
 
-      - name: Generate Clean Flat Repository
+      - name: Generate Flat APT Repository
         run: |
-          # 1. Tao file .nojekyll de bo qua Jekyll parser
           touch .nojekyll
-
-          # 2. Xoa sach cac index cu de tranh lech hash
           rm -f Packages Packages.gz Packages.bz2 Packages.xz Release Release.gpg InRelease
-
-          # 3. Quet package va loai bo dau ./
           dpkg-scanpackages -m . /dev/null > Packages
           sed -i 's|Filename: \./|Filename: |g' Packages
-
-          # 4. Nen Packages thanh bz2 va xz (Cydia uu tien Packages.bz2)
           bzip2 -c9 Packages > Packages.bz2
           xz -c9 Packages > Packages.xz
-
-          # 5. Tao file Release chuan thong tin (KHONG ghi hash de tranh lech hash CDN tren Cydia)
           cat << 'EOF' > Release
 Origin: DS Gaming APT Repository
 Label: DS Gaming
@@ -51,9 +42,9 @@ Components: main
 Description: A permanent archive of iOS tweaks and utilities.
 EOF
 
-      - name: Commit and Push clean indexes
+      - name: Push index updates
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add -A
-          git diff --quiet && git diff --staged --quiet || (git commit -m "fix: pure flat repo without broken hash checksums [skip ci]" && git push origin main)
+          git diff --quiet && git diff --staged --quiet || (git commit -m "fix: automatic APT indexing [skip ci]" && git push origin main)
